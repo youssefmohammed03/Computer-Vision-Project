@@ -19,7 +19,7 @@ code11_widths = {
     "00100": "-",
 }
 
-your_cropped_image = cv2.imread("11.jpg", cv2.IMREAD_GRAYSCALE)
+your_cropped_image = cv2.imread("Cropped_Barcode.jpg", cv2.IMREAD_GRAYSCALE)
 
 # Get the average of each column in your image
 mean = your_cropped_image.mean(axis=0)
