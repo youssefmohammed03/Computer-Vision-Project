@@ -72,3 +72,4 @@ def decode(image_path):
             skip_next = True  # Next iteration will be a separator, so skip it
 
     print(digits)
+    return digits
