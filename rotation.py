@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from salt_pepper import remove_salt_pepper
 
 def preprocess_image(image):
     """Convert the image to grayscale."""
@@ -70,9 +71,10 @@ def rotate_image(image, angle):
     rotated = cv2.warpAffine(image, M, (bound_w, bound_h), flags=cv2.INTER_LINEAR, borderValue=(255,255,255))
     return rotated
 
-def rotate_barcode(image, output_path=None):
+def rotate_barcode(image_path, output_path=None):
     """Preprocess the barcode image and optionally save the corrected image."""
-
+    # Load the image
+    image = cv2.imread(image_path)
     # Convert to grayscale
     thresh = preprocess_image(image)
     print("Preprocessed image for rotation.")
@@ -83,7 +85,9 @@ def rotate_barcode(image, output_path=None):
 
     # Rotate image to make barcode horizontal
     if needs_rotation(angle):
-        rotated = rotate_image(image, angle)
+        remove_salt_pepper(image, "peppered.jpg")
+        new_img = cv2.imread("peppered.jpg")
+        rotated = rotate_image(new_img, angle)
         print("Image rotated to correct orientation.")
     else:
         rotated = image
