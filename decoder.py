@@ -20,7 +20,7 @@ def decode(image_path):
         "00100": "-",
     }
 
-
+    
     your_cropped_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
     # Get the average of each column in your image
@@ -73,3 +73,6 @@ def decode(image_path):
 
     print(digits)
     return digits
+
+
+decode("output\\11Rotated.jpg")
