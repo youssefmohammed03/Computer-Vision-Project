@@ -50,7 +50,7 @@ def rotate_image(image, angle):
     """Rotate the image by the specified angle."""
     (h, w) = image.shape[:2]
     center = (w // 2, h // 2)
-
+    print(f"angle: {angle}")
     # Compute the rotation matrix
     M = cv2.getRotationMatrix2D(center, -(90-angle), 1.0)
 
